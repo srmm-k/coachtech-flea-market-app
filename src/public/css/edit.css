@@ -1,0 +1,45 @@
+.address-edit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 100px 100px;
+    width: 1486px;
+    font-family: sans-serif;
+}
+
+.address-edit-container h2 {
+    font-size: 34px;
+    margin-bottom: 24px;
+}
+
+.address-edit-container form {
+    display: flex;
+    flex-direction: column;
+    width: 680px;
+    gap: 6px;
+}
+
+.address-edit-container label {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.address-edit-container input {
+    margin-bottom: 40px;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #000;
+    border-radius: 6px;
+}
+
+.address-edit-container .update {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 26px;
+    background-color: #FF5555;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

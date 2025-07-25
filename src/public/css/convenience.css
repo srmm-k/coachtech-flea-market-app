@@ -1,0 +1,12 @@
+.convenience-container {
+    padding: 120px;
+    width: 1000px;
+}
+
+.convenience-container h2 {
+    font-size: 35px;
+}
+
+.convenience-container ul {
+    line-height: 3;
+}

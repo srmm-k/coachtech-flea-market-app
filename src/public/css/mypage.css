@@ -1,0 +1,107 @@
+body {
+    margin: 0px;
+}
+
+.mypage-container {
+    width: 1230px;
+    padding: 20px;
+}
+
+.mypage-header {
+    margin: 120px 0 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.btn-primary {
+    color: #fe7c7c;
+    font-size: 23px;
+    text-decoration: none;
+    border: solid 2px #fe7c7c;
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    left: 300px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 300px;
+}
+
+.profile-icon {
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+    position: relative;
+    left: 100px;
+}
+
+.username {
+    font-size: 35px;
+    margin-left: 200px;
+    position: relative;
+}
+
+.product-switcher {
+    border-bottom: 1px solid #000;
+    width: 1650px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 10px 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 29px;
+    position: relative;
+    left: 100px;
+}
+
+.tab-button.active {
+    font-size: 29px;
+    color: red;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 100px;
+}
+
+.product-card {
+    width: 270px;
+    text-align: center;
+    display: inline-block;
+}
+
+.product-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card img {
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.product-name {
+    margin: 8px 0 0 65px;
+    font-size: 21px;
+    text-align: left;
+    width: 270px;
+}
+
+.purchased {
+    display: none;
+}

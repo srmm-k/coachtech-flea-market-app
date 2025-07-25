@@ -1,0 +1,84 @@
+.member-registration__content {
+    padding: 100px 160px;
+    max-width: 500px;
+}
+
+.member-registration__heading {
+    font-size: 26px;
+    display: flex;
+    position: relative;
+    left: 650px;
+}
+
+.form__label--item {
+    font-weight: bold;
+    font-size: 24px;
+    position: relative;
+    left: 55px;
+}
+
+.form__group {
+    margin: 20px 350px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+
+.form__group-content {
+    position: relative;
+    left: 50px;
+}
+
+.form__error {
+    height: 20px;
+    color: #ff0000;
+    position: relative;
+    left: 50px;
+}
+
+.form__input--text input,
+.form__input--textarea textarea {
+    padding: 12px;
+    width: 650px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.registration-button {
+    margin-top: 70px;
+    width: 650px;
+    height: 60px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background: #ff5555;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    left: 400px;
+    cursor: pointer;
+}
+
+.login {
+    width: 300px;
+    font-size: 20px;
+    padding: 40px;
+    position: relative;
+    left: 605px;
+    display: block;
+    color: #0073cc;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.form__note {
+    margin: 0;
+    font-size: 15px;
+    position: relative;
+    left: 50px;
+    color: #7c7c7c;
+}

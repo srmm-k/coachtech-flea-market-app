@@ -1,0 +1,22 @@
+.header {
+    background: #000;
+}
+
+body {
+    margin: 0;
+}
+
+.header__inner {
+    position: fixed;
+    height: 80px;
+    background: #000;
+    z-index: 1000;
+    width: 100%;
+}
+
+.top-header__logo {
+    width: 400px;
+    height: 58px;
+    position: relative;
+    top: 11px;
+}

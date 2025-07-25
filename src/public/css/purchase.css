@@ -1,0 +1,188 @@
+body {
+    overflow-x: auto;
+}
+
+.purchase-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 40px;
+    width: 1510px;
+    margin: 0 50px;
+    font-family: sans-serif;
+}
+
+.purchase-left,
+.purchase-right {
+    margin-top: 50px;
+    padding: 24px;
+    border-radius: 12px;
+
+}
+
+.purchase-left {
+    flex: 2;
+    width: 600px;
+}
+
+.purchase-right {
+    flex: 1;
+    width: 440px;
+    height: fit-content;
+}
+
+.product-image-name {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 24px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #000;
+}
+
+.product-image-name img {
+    width: 177px;
+    height: 177px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-info h2 {
+    margin: 0 0 10px;
+    font-size: 30px;
+}
+
+.product-info p {
+    font-size: 27px;
+    color: #333;
+}
+
+.payment-section,
+.address-section {
+    margin-top: 20px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid #000
+}
+
+.payment-section label,
+.address-section label {
+    display: block;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.payment-section select {
+    width: 265px;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #5f5f5f;
+    position: relative;
+    top: 25px;
+    left: 80px;
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-link {
+    font-size: 22px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.address-section p {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+    position: relative;
+    top: 30px;
+    left: 50px;
+}
+
+
+.product-price,
+.payment-method {
+    border: 1px solid #000;
+    padding: 40px;
+    margin: 0;
+    border-bottom: none;
+}
+
+.payment-method {
+    border-bottom: 1px solid #000;
+}
+
+.form__error {
+    margin-top: 8px;
+    padding: 8px;
+}
+
+
+
+.purchase-right p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    font-weight: bold;
+    color: #222;
+}
+
+.space-left {
+    font-weight: bold;
+}
+
+.purchase-button {
+    display: block;
+    width: 430px;
+    height: 60px;
+    background-color: #FF5555;
+    color: white;
+    padding: 12px;
+    font-size: 26px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.form-text {
+    color: red;
+    position: relative;
+    top: 30px;
+}
+
+.address-grid {
+    display: grid;
+    /*グリッドレイアウトを使う*/
+    grid-template-columns: 200px auto;
+    /*左：住所、右：エラー表示の列を設定*/
+    row-gap: 8px;
+    /*上下の行同士の間隔*/
+    column-gap: 500px;
+    /*左右の列の間隔*/
+    align-items: start;
+    /*上揃えで整列*/
+    margin-top: 8px;
+    /*上に少し余白*/
+}
+
+.label-cell {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.error-cell {
+    color: red;
+    font-size: 16px;
+    padding-left: 4px;
+}

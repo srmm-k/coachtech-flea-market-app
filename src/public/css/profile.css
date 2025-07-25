@@ -1,0 +1,149 @@
+main {
+    padding: 50px 130px;
+    overflow: auto;
+}
+
+.imageWrapper {
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    left: 730px;
+}
+
+.icon_image {
+    height: 130px;
+    position: relative;
+    right: 266px;
+}
+
+.imagechoie {
+    text-decoration: none;
+
+}
+
+
+.profile__image {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto 30px;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #878282;
+    border-radius: 100px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+}
+
+.image-error {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: red;
+    position: relative;
+    right: 80px;
+}
+
+.imageChangeText[data-v-0188176a] {
+    position: relative;
+    bottom: 95px;
+}
+
+.fileWrap {
+    background: transparent;
+    padding: 13px 20px;
+    font-size: 25px;
+    color: #FF5555;
+    border: 2px solid #FF5555;
+    border-radius: 10px;
+    position: relative;
+    left: 500px;
+    cursor: pointer;
+}
+
+.input {
+    display: none;
+}
+
+
+.profile__content {
+    padding: 40px 15px;
+}
+
+.profile__heading {
+    width: 500px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-align: center;
+    position: relative;
+    left: 450px;
+}
+
+.form {
+    width: 700px;
+}
+
+.form__label--item {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.form__group-title {
+    width: 650px;
+    text-align: left;
+    position: relative;
+    left: 450px;
+
+}
+
+.form__group {
+    /* display: flex; */
+    margin: 50px 30px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: relative;
+    right: 110px;
+}
+
+.form__error p {
+    color: red;
+    font-size: 16px;
+    margin-top: 4px;
+    position: relative;
+    left: 450px;
+}
+
+.form__input--text {
+    width: 500px;
+}
+
+.form__input--text input,
+.form__input--textarea textarea {
+    padding: 12px;
+    width: 660px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 15px;
+}
+
+.update {
+    height: 60px;
+    margin: 50px;
+    background: #FF5555;
+    color: #fff;
+    width: 660px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 27px;
+    position: relative;
+    left: 320px;
+    border-radius: 4px;
+}

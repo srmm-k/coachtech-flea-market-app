@@ -1,0 +1,33 @@
+.verify__container {
+    width: 1695px;
+    /* margin: 80px auto; */
+    padding: 300px;
+    /* background-color: #fff; */
+    /* border-radius: 12px; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    text-align: center;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.verify__message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.verify__success {
+    color: #16a34a;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.verify__resend-button{
+    padding: 12px 24px;
+    background: none;
+    color:#2563eb;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}

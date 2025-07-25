@@ -1,0 +1,29 @@
+.thank-you-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*垂直方向中央*/
+    align-items: center;
+    /*水平方向中央*/
+    text-align: center;
+    /*テキスト中央*/
+    padding: 250px 620px;
+    width: 1695px;
+    height: 100%;
+}
+
+.thank-you-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.thank-you-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.thank-you-container .btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}

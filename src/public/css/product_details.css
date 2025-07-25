@@ -1,0 +1,283 @@
+.product-detail-container {
+    display: flex;
+    gap: 200px;
+    padding: 150px 150px 0 150px;
+}
+
+.product-detail-left img {
+    width: 600px;
+    height: 600px;
+    border-radius: 8px;
+}
+
+.product-detail-left {
+    position: relative;
+}
+
+.sold-ribbon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-top: 80px solid rgba(255, 0, 0, 0.85);
+    border-right: 80px solid transparent;
+    z-index: 10;
+    border-top-left-radius: 8px;
+}
+
+.sold-ribbon::after {
+    content: "SOLD";
+    position: absolute;
+    top: -60px;
+    left: 5px;
+    transform: rotate(-45deg);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-wrap: nowrap;
+}
+
+.product-detail-right {
+    flex: 1;
+}
+
+.product-detail-right h2 {
+    font-size: 45px;
+    width: 570px;
+    height: 77px;
+    margin: 0;
+}
+
+.brand-name {
+    position: relative;
+    bottom: 30px;
+}
+
+.price-tag {
+    font-size: 20px;
+    width: 570px;
+    height: 45px;
+}
+
+.price {
+    font-size: 30px;
+}
+
+.product-actions button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-actions form {
+    margin: 0;
+}
+
+.purchase-button {
+    width: 570px;
+    height: 56px;
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.sold-label {
+    width: 570px;
+    background-color: #ccc;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 28px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.product-description {
+    width: 570px;
+    height: 321px;
+}
+
+.product-description h4 {
+    font-size: 30px;
+}
+
+.product-info {
+    width: 570px;
+    height: 230px;
+}
+
+.product-info h4 {
+    font-size: 30px;
+}
+
+.category {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-label {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 100px;
+}
+
+.category-badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 15px;
+    background-color: #d6d3d3;
+    color: #333;
+    border-radius: 30px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.condition {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 40px 0;
+}
+
+.condition-tag {
+    font-size: 20px;
+    margin-left: 100px;
+    font-weight: normal;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-button:hover .like-icon {
+    color: #f3da5f;
+}
+
+.like-button.liked .like-icon {
+    color: #f3da5f;
+}
+
+.like-count {
+    font-size: 16px;
+    color: #333;
+}
+
+.comment-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.comment-count {
+    margin-left: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.comments-section {
+    width: 570px;
+    height: 600px;
+}
+
+.comments-section h4 {
+    font-size: 30px;
+}
+
+.comment {
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.comment-user-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.comment-username {
+    font-weight: bold;
+    position: relative;
+    bottom: 15px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-form h4 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.comment-form textarea {
+    width: 553px;
+    height: 246px;
+    padding: 7px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-form button {
+    width: 553px;
+    height: 56px;
+    padding: 10px 20px;
+    font-size: 24px;
+    background: #ff5555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+    font-size: 18px;
+    margin: 5px 0 15px;
+}
+
+.comment-delete-button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+}

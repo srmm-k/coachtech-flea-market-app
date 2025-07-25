@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+}
+
+.tag-list {
+    padding-top: 130px;
+    border-bottom: 1px solid #000;
+    font-size: 27px;
+    letter-spacing: 3px;
+    padding-left: 250px;
+}
+
+.tag {
+    position: relative;
+    left: 200px;
+}
+
+.recommendButton {
+    cursor: pointer;
+}
+
+
+.recommendItems {
+    display: none;
+}
+
+
+
+.example2 {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+}
+
+
+
+.example2 label {
+    display: block;
+    color: #000;
+    padding: 10px;
+    margin-right: 150px;
+    cursor: pointer;
+}
+
+.example2 input:checked+label {
+    color: red;
+}
+
+.example2 input {
+    display: none;
+}
+
+.merchandiselist {
+    text-decoration: none;
+    color: #000;
+}
+
+
+.product-details {
+    display: none;
+}
+
+input[type="radio"]:checked+label+.product-details {
+    /* ラジオボタンの選択とラベルの後に表示される商品詳細 */
+    display: block;
+    /* 選択された場合、表示 */
+}
+
+.product-item {
+    text-align: left;
+    position: relative;
+}
+
+.product-list {
+    width: 1600px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+}
+
+.product-list img {
+    width: 290px;
+    height: 290px;
+    margin: 30px 62px 5px 62px;
+    display: block;
+}
+
+.sold-ribbon {
+    position: absolute;
+    top: 30px;
+    left: 62px;
+    width: 0;
+    height: 0;
+    border-top: 70px solid rgba(255, 0, 0, 0.85);
+    border-right: 70px solid transparent;
+    z-index: 10;
+    border-top-left-radius: 8px;
+}
+
+.sold-ribbon::after {
+    content: "SOLD";
+    position: absolute;
+    top: -55px;
+    left: 5px;
+    transform: rotate(-45deg);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-wrap: nowrap;
+}
+
+.product-list h3 {
+    width: 290px;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: normal;
+    margin: 0 62px;
+    color: #000;
+}
