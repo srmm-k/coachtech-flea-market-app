@@ -28,11 +28,16 @@
 
 
 <script>
-    let intervalId = null;
-
-    function stopChecking() {
-        if (intervalId) clearInterval(intervalId);
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoLink = document.querySelector('header a[href="/"], header a[href*="top_page"]');
+        if (logoLink) {
+            // ロゴのクリックイベントを阻止
+            logoLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('メール認証を完了してログインしてください。');
+            });
+        }
+    });
 
 </script>
 

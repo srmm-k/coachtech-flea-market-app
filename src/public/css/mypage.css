@@ -3,17 +3,38 @@ body {
 }
 
 .mypage-container {
-    width: 1230px;
+    max-width: 1540px;
     padding: 20px;
+    width: 100%;
 }
 
 .mypage-header {
-    margin: 120px 0 50px 0;
+    margin: 100px 0 50px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.profile-icon {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 60px;
+}
+
+.username {
+    font-size: 35px;
+    font-weight: bold;
+}
 
 .btn-primary {
     color: #fe7c7c;
@@ -21,52 +42,38 @@ body {
     text-decoration: none;
     border: solid 2px #fe7c7c;
     border-radius: 10px;
-    padding: 16px;
-    position: relative;
-    left: 300px;
-}
-
-.profile-info {
-    display: flex;
-    align-items: center;
-    position: relative;
-    left: 300px;
-}
-
-.profile-icon {
-    width: 170px;
-    height: 170px;
-    border-radius: 100px;
-    object-fit: cover;
-    margin-right: 15px;
-    position: relative;
-    left: 100px;
-}
-
-.username {
-    font-size: 35px;
-    margin-left: 200px;
-    position: relative;
+    padding: 10px 20px;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .product-switcher {
     border-bottom: 1px solid #000;
-    width: 1650px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.product-switcher a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .tab-button {
     padding: 10px 20px;
-    margin: 10px 30px;
+    margin: 0;
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 29px;
-    position: relative;
-    left: 100px;
+    font-size: 25px;
+    font-weight: bold;
+    outline: none;
 }
 
 .tab-button.active {
     font-size: 29px;
+    font-weight: normal;
     color: red;
 }
 
@@ -74,34 +81,153 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 100px;
+    margin-top: 30px;
+}
+
+.product-list>p {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    padding: 20px 0;
 }
 
 .product-card {
-    width: 270px;
     text-align: center;
     display: inline-block;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .product-card a {
     text-decoration: none;
     color: inherit;
+    display: block;
 }
 
 .product-card img {
-    width: 270px;
-    height: 270px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+    border-radius: 5px 5px 0 0;
 }
 
 .product-name {
     margin: 8px 0 0 65px;
     font-size: 21px;
     text-align: left;
-    width: 270px;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .purchased {
     display: none;
+}
+
+/* PC画面 (1400px - 1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .mypage-container {
+        max-width: 1540px;
+        padding: 40px;
+    }
+
+    .mypage-header {
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .profile-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .username {
+        font-size: 30px;
+    }
+
+    .btn-primary {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    .tab-button {
+        font-size: 25px;
+        font-weight: normal;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .product-card img {
+        height: 180px;
+    }
+
+    .product-name {
+        font-size: 18px;
+    }
+}
+
+/* タブレット画面 (768px - 850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .mypage-container {
+        max-width: 850px;
+        padding: 20px;
+    }
+
+    .mypage-header {
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .profile-info {
+        margin-bottom: 0;
+    }
+
+    .profile-icon {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+    }
+
+    .username {
+        font-size: 24px;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .product-switcher {
+        margin-bottom: 20px;
+    }
+
+    .tab-button {
+        padding: 8px 15px;
+        font-size: 25px;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .product-name {
+        font-size: 16px;
+        margin: 6px 8px 8px;
+    }
+
+    .edit-profile {
+        width: auto;
+        text-align: center;
+    }
 }

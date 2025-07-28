@@ -1,27 +1,37 @@
 main {
-    padding: 100px 460px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 .listing__content {
     white-space: nowrap;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .listing__heading {
     font-size: 30px;
-    position: relative;
-    left: 280px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .upload-box {
     border: 2px dashed #a8a6a6;
     padding: 20px;
-    width: 780px;
+    width: 100%;
+    max-width: 780px;
     height: 243px;
     position: relative;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 .fileWrap {
@@ -31,7 +41,6 @@ main {
     color: #FF5555;
     border: 2px solid #FF5555;
     border-radius: 10px;
-    position: relative;
     cursor: pointer;
     white-space: nowrap;
 }
@@ -44,8 +53,7 @@ main {
 .listing-img__title {
     font-size: 25px;
     font-weight: bold;
-    position: relative;
-    top: 100px;
+    margin-bottom: 15px;
     white-space: nowrap;
 }
 
@@ -53,57 +61,30 @@ main {
     display: none;
     position: relative;
     height: 240px;
-}
-
-.Title {
-    position: relative;
-    margin-top: 30px;
-}
-
-h3 {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-}
-
-.listing-img__title {
-    position: relative;
-    top: 10px;
-}
-
-.ImageUpload__hide {
-    display: block;
-    text-indent: -9999px;
-
-}
-
-
-.ImageUpload__label {
-    display: block;
-    position: relative;
-    width: 770px;
-    height: 180px;
-    border: 2px dashed #ccc;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .merchandise-category {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 50px;
 }
 
 .category-title {
     white-space: nowrap;
     font-size: 23px;
+    margin-bottom: 20px;
 }
 
 .merchandise-detail {
-    width: 780px;
+    width: 100%;
+    max-width: 780px;
     font-size: 30px;
     color: #515151;
     padding-bottom: 15px;
     border-bottom: 1px solid #767575;
+    margin-bottom: 30px;
 }
 
 
@@ -116,6 +97,8 @@ h3 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 15px 23px;
+    margin-bottom: 30px;
 }
 
 .category {
@@ -124,33 +107,35 @@ h3 {
 
 .category-tag {
     white-space: nowrap;
-    margin-right: 23px;
-    margin-bottom: 30px;
     padding: 10px 20px;
     border: 2px solid #FF5555;
     border-radius: 30px;
     color: #FF5555;
-    position: relative;
-    left: 20px;
+    cursor: pointer;
 }
 
 .product-situation {
     font-size: 23px;
+    margin-bottom: 15px;
 }
 
 select {
-    width: 780px;
+    width: 100%;
+    max-width: 780px;
     height: 47px;
     font-size: 17px;
+    margin-bottom: 30px;
 }
 
 .product-description {
-    margin-top: 100px;
+    margin-top: 50px;
     padding-bottom: 15px;
-    width: 780px;
+    width: 100%;
+    max-width: 780px;
     font-size: 30px;
     color: #515151;
     border-bottom: 1px solid #000;
+    margin-bottom: 30px;
 }
 
 .form-group {
@@ -160,28 +145,29 @@ select {
 .form__label--item {
     font-size: 23px;
     font-weight: bold;
-}
-
-.form__group-content {
-    margin-bottom: 20px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .textarea {
     height: 100px;
-    width: 780px;
-    margin-top: 10px;
+    width: 100%;
+    max-width: 780px;
+    margin-top: 0;
     padding: 6px;
     font-size: 18px;
 }
 
 .input-price-wrapper {
     position: relative;
+    width: 100%;
+    max-width: 780px;
 }
 
 .yen-mark {
     position: absolute;
     left: 10px;
-    top: 30px;
+    top: 47%;
     transform: translateY(-50%);
     font-size: 27px;
     color: #333;
@@ -189,10 +175,12 @@ select {
 }
 
 .input-tag {
-    margin-top: 10px;
-    width: 780px;
+    margin-top: 0;
+    width: 100%;
+    max-width: 780px;
     height: 40px;
     font-size: 20px;
+    box-sizing: border-box;
 }
 
 .input-tag::-webkit-outer-spin-button,
@@ -207,23 +195,115 @@ select {
 
 .price-input {
     padding-left: 32px;
-    width: 780px;
 }
 
 .listing-button {
     height: 60px;
-    margin: 50px;
+    margin: 50px auto 0 auto;
     background: #FF5555;
     color: #fff;
-    width: 780px;
+    width: 100%;
+    max-width: 780px;
     border: none;
     cursor: pointer;
     font-size: 27px;
-    position: relative;
-    right: 52px;
     border-radius: 5px;
+    display: block;
 }
 
 .error {
     color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* PC画面 (1400px - 1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .listing__content {
+        max-width: 900px;
+    }
+}
+
+/* タブレット画面 (768px - 850px) */
+@media (min-width: 768px) and (max-width: 850px){
+    .listing__heading {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .listing-img__title,
+    .merchandise-detail,
+    .product-situation,
+    .form__label--item {
+        font-size: 20px;
+    }
+
+    .upload-box {
+        height: 180px;
+        padding: 15px;
+    }
+
+    .fileWrap {
+        padding: 8px 25px;
+        font-size: 16px;
+    }
+
+    .img {
+        height: 170px;
+    }
+
+    .merchandise-category {
+        margin-top: 30px;
+    }
+
+    .category-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .example2 {
+        gap: 10px 15px;
+    }
+
+    .category-tag {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    select {
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .product-description {
+        margin-top: 30px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .input-tag,
+    .textarea {
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .textarea {
+        height: 80px;
+    }
+
+    .yen-mark {
+        font-size: 22px;
+    }
+
+    .price-input {
+        padding-left: 28px;
+    }
+
+    .listing-button {
+        height: 50px;
+        font-size: 22px;
+        margin: 30px auto 0 auto;
+    }
 }

@@ -10,7 +10,7 @@
                 <h2>商品の出品</h2>
             </div>
 
-</div>
+
         <form id="listingForm" class="imageWrapper" method="POST" action="{{ route('sell.store') }}" enctype="multipart/form-data">
             @csrf
 
@@ -147,7 +147,7 @@
                 <button class="listing-button" type="submit">出品する</button>
             </div>
         </form>
-
+</div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('listingForm');

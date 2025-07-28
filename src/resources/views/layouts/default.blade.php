@@ -13,15 +13,16 @@
 </head>
 
 <body>
-<header class="header"> <!--block-->
+<header class="header">
         <div class="header__inner">
-            <a href="/">
-            <img class="top-header__logo" src="{{ asset('img/logo.svg') }}" alt="">
-            </a>
-            <div class="widget-content">
-                <form action="{{ route('search') }}" class="search-box-form" method="GET">
-                    <input class="search-box-text" name="keyword" value="{{ request('keyword') }}" placeholder=" なにをお探しですか？" type="text">
-                </form>
+            <div class="header-left"> <a href="/">
+                <img class="top-header__logo" src="{{ asset('img/logo.svg') }}" alt="">
+                </a>
+                <div class="widget-content">
+                    <form action="{{ route('search') }}" class="search-box-form" method="GET">
+                        <input class="search-box-text" name="keyword" value="{{ request('keyword') }}" placeholder=" なにをお探しですか？" type="text">
+                    </form>
+                </div>
             </div>
             <nav>
                 <ul class="header-list">

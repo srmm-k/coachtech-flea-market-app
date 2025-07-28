@@ -1,26 +1,75 @@
+main {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+
 .thank-you-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 250px 620px;
-    width: 1695px;
-    height: 100%;
+    padding: 40px 20px;
+    max-width: 600px;
+    width: 100%;
+    font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 .thank-you-container h2 {
     font-size: 32px;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .thank-you-container p {
     font-size: 18px;
     margin-bottom: 30px;
+    line-height: 1.5;
 }
 
 .thank-you-container .btn {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 18px;
     border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #FF5555;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.thank-you-container .btn:hover {
+    background-color: #e54d4d;
+}
+
+/* タブレット画面 (768px - 850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .thank-you-container {
+        padding: 30px 15px;
+        max-width: 90%;
+    }
+
+    .thank-you-container h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    .thank-you-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .thank-you-container .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
 }

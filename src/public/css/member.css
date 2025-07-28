@@ -1,54 +1,63 @@
 .member-registration__content {
-    padding: 100px 160px;
-    max-width: 500px;
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
 }
 
 .member-registration__heading {
-    font-size: 26px;
-    display: flex;
-    position: relative;
-    left: 650px;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .form__label--item {
     font-weight: bold;
-    font-size: 24px;
-    position: relative;
-    left: 55px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
 }
 
 .form__group {
-    margin: 20px 350px;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+.form__group-title {
+    width: 100%;
 }
 
 .form__group-content {
-    position: relative;
-    left: 50px;
+    width: 100%;
 }
 
 .form__error {
-    height: 20px;
+    width: 100%;
+    height: auto;
     color: #ff0000;
-    position: relative;
-    left: 50px;
+    white-space: normal;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
 }
 
 .form__input--text input,
 .form__input--textarea textarea {
     padding: 12px;
-    width: 650px;
+    width: 100%;
     border: 1px solid #ddd;
     border-radius: 3px;
     font-size: 15px;
+    box-sizing: border-box;
 }
 
 .registration-button {
-    margin-top: 70px;
-    width: 650px;
-    height: 60px;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -56,19 +65,18 @@
     text-align: center;
     display: block;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    position: relative;
-    left: 400px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login {
-    width: 300px;
-    font-size: 20px;
-    padding: 40px;
-    position: relative;
-    left: 605px;
+    font-size: 18px;
+    padding: 0;
+    margin-top: 30px;
+    text-align: center;
     display: block;
     color: #0073cc;
     text-decoration: none;
@@ -76,9 +84,92 @@
 }
 
 .form__note {
-    margin: 0;
-    font-size: 15px;
-    position: relative;
-    left: 50px;
+    margin: 5px 0 0;
+    font-size: 14px;
     color: #7c7c7c;
+    text-align: left;
+}
+
+/* PC画面 (1400px - 1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .member-registration__content {
+        max-width: 700px;
+        padding: 40px;
+    }
+
+    .member-registration__heading {
+        font-size: 36px;
+    }
+
+    .form__label--item {
+        font-size: 20px;
+    }
+
+    .form__input--text input,
+    .form__input--textarea textarea {
+        font-size: 15px;
+    }
+
+    .registration-button {
+        max-width: 100%;
+        font-size: 20px;
+    }
+
+    .login {
+        font-size: 18px;
+    }
+
+    .form__note {
+        font-size: 14px;
+    }
+}
+
+/* タブレット画面 (768px - 850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .member-registration__content {
+        max-width: 550px;
+        padding: 30px;
+        margin: 30px auto;
+    }
+
+    .member-registration__heading {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .form__label--item {
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .form__group {
+        margin-bottom: 20px;
+    }
+
+    .form__input--text input,
+    .form__input--textarea textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form__error {
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .registration-button {
+        max-width: 100%;
+        padding: 8px;
+        font-size: 18px;
+        margin-top: 40px;
+    }
+
+    .login {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .form__note {
+        font-size: 12px;
+    }
 }

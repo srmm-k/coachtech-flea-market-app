@@ -12,11 +12,47 @@ body {
     background: #000;
     z-index: 1000;
     width: 100%;
+    display: flex;
+    padding-left: 8px;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .top-header__logo {
-    width: 400px;
-    height: 58px;
-    position: relative;
-    top: 11px;
+    width: 250px;
+    height: auto;
+    /* position: relative; */
+    /* top: 11px; */
+}
+
+main {
+    padding-top: 80px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 50px;
+}
+
+/* PC画面 (1400px - 1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .top-header__logo {
+        width: 250px;
+    }
+}
+
+/* タブレット画面 (768px - 850px) */
+@media (min-width: 768px) and (max-width: 850px) {
+    .header__inner {
+        height: 60px;
+    }
+
+    .top-header__logo {
+        width: 180px;
+    }
+
+    main {
+        padding-top: 60px;
+    }
 }

@@ -1,45 +1,111 @@
+main {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
 .address-edit-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    padding: 100px 100px;
-    width: 1486px;
+    padding: 40px 20px;
+    max-width: 800px;
+    width: 100%;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 .address-edit-container h2 {
-    font-size: 34px;
-    margin-bottom: 24px;
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .address-edit-container form {
     display: flex;
     flex-direction: column;
-    width: 680px;
-    gap: 6px;
+    width: 100%;
+    max-width: 500px;
+    gap: 15px;
 }
 
 .address-edit-container label {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
 }
 
 .address-edit-container input {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     border: 1px solid #000;
     border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .address-edit-container .update {
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 12px;
-    font-size: 26px;
+    font-size: 22px;
     background-color: #FF5555;
     color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* エラーメッセージのスタイル */
+.form-error {
+    color: red;
+    font-size: 14px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* タブレット画面 (768px - 850px) */
+@media (min-width: 768px) and (max-width: 850px){
+    .address-edit-container {
+        padding: 20px 15px;
+    }
+
+    .address-edit-container h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .address-edit-container form {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .address-edit-container label {
+        font-size: 18px;
+    }
+
+    .address-edit-container input {
+        margin-bottom: 15px;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .address-edit-container .update {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .form-error {
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
 }

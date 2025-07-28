@@ -24,7 +24,7 @@ class ListingsTableSeeder extends Seeder
                 'product_name' => '腕時計',
                 'price' => 15000,
                 'description' => 'スタイリッシュなデザインのメンズ腕時計',
-                'image_path' => 'images/EzeZT0KP8zEY0Q5otMmziBdvWrrbiD83wE7WhRc3.jpg',
+                'image_path' => 'images/Armani+Mens+Clock.jpg',
                 'condition' => '良好',
                 'category' => ['メンズ', 'アクセサリー', 'ファッション'],
                 'is_sold' => false,
