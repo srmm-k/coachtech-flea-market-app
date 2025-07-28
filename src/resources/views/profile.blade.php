@@ -13,7 +13,6 @@
                     @csrf
 
                     <div class="profile__image">
-                    <!-- <label class="ImageUpload__label"> -->
                         <input class="input" type="file" name="profile_image" id="file_upload" accept="image/*" onchange="previewImage(event)">
                         <label class="fileWrap" for="file_upload">画像を選択する</label>
                         <img class="img" id="preview" src="{{ $profile && $profile->profile_image ? asset('storage/' . $profile->profile_image) : asset('images/profile_icon.png') }}">

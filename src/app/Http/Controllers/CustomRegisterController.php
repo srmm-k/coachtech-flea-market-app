@@ -22,8 +22,6 @@ class CustomRegisterController extends Controller
 
         
         event(new Registered($user));
-        // dd(auth()->user());
-        // \Log::info('★登録完了後のリダイレクト');
         Auth::login($user, true);
         return redirect()->route('verify.email.info');
     }

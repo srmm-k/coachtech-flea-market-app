@@ -8,7 +8,6 @@
 <div class="product-detail-container">
     <div class="product-detail-left">
         <img src="{{ asset('storage/' . $listing->image_path) }}" alt="{{ $listing->product_name }}">
-        <!-- <p>is_sold: {{ $listing->is_sold ? 'true' : 'false' }}</p> -->
         @if($listing->is_sold)
         <div class="sold-ribbon"></div>
         @endif
@@ -58,7 +57,7 @@
 
         @if(is_null($listing->buyer_id))
             <form action="{{ route('purchase.start', ['id' => $listing->id]) }}" method="GET">
-            @csrf
+            <!-- @csrf -->
             <button type="submit" class="purchase-button">購入手続きへ</button>
             </form>
             @else
@@ -89,12 +88,12 @@
             </p>
         </div>
 
-        @if(auth()->check() && auth()->id() === $listing->user_id && $listing->buyer_id)
+        @if(auth()->check() && auth()->id() === $listing->user_id && $listing->is_sold && $purchaseInfo)
             <div class="shipping-info">
                 <h4>購入者の配送先情報</h4>
-                <p>〒{{ $listing->shipping_postcode }}</p>
-                <p>{{ $listing->shipping_address }}</p>
-                <p>{{ $listing->shipping_building }}</p>
+                <p>〒{{ $purchaseInfo->shipping_postcode }}</p>
+                <p>{{ $purchaseInfo->shipping_address }}</p>
+                <p>{{ $purchaseInfo->shipping_building }}</p>
             </div>
         @endif
 

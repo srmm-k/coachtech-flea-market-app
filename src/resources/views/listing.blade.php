@@ -16,7 +16,6 @@
 
         <div class="listing__image">
             <h3 class="listing-img__title">商品画像</h3>
-            <!-- <label class="ImageUpload__label"> -->
                 <div class="upload-box">
                 <label class="fileWrap" for="file_upload">画像を選択する</label>
                 <input class="input" type="file" name="image" id="file_upload" accept="image/*" onchange="previewImage(event)">

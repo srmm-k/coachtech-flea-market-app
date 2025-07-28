@@ -18,7 +18,6 @@
             @endif
 
             <span class="username">{{ $user->name ?? '名前未設定' }}</span>
-            <!-- <p>保存されているパス: {{ $user->icon_path }}</p> -->
         </div>
         <div class="edit-profile">
             <a class="btn-primary" href="{{ route('profile.show') }}">プロフィールを編集</a>
@@ -43,7 +42,6 @@
         @forelse ($listings as $listing)
         <div class="product-card">
             <a href="{{ route('item.show', ['item_id' => $listing->id]) }}">
-                <!-- <img src="{{ asset('storage/' . $listing->image_path) }}" alt="{{ $listing->product_name }}"> -->
                 @include('partials.product_image', ['listing' => $listing])
                 <p class="product-name">{{ $listing->product_name }}</p>
             </a>
@@ -57,7 +55,6 @@
         @forelse ($purchasedListings as $listing)
         <div class="product-card">
             <a href="{{ route('item.show', ['item_id' => $listing->id]) }}">
-                <!-- <img src="{{ asset('storage/' . $listing->image_path) }}" alt="{{ $listing->product_name }}"> -->
                 @include('partials.product_image', ['listing' => $listing])
                 <p class="product-name">{{ $listing->product_name }}</p>
             </a>

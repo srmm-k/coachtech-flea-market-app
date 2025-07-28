@@ -57,4 +57,9 @@ class Listing extends Model
     {
         return $this->belongsToMany(User::class, 'likes', 'listing_id', 'user_id')->withTimestamps();
     }
+
+    public function purchase()
+    {
+        return $this->hasOne(Purchase::class, 'listing_id', 'id')->where('status', 'succeeded');
+    }
 }

@@ -30,7 +30,7 @@ use App\Models\User;
 Route::get('/', [SearchController::class, 'index'])->name('top');
 
 //出品一覧・詳細
-Route::get('/listing', [ListingController::class, 'index'])->name('listing');
+// Route::get('/listing', [ListingController::class, 'index'])->name('listing');
 Route::get('/item/{item_id}', [ListingController::class, 'show'])->name('item.show');
 
 //検索
@@ -66,8 +66,10 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', '認証メールを再送しました');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-
-
+//決済成功・キャンセル後のリダイレクト先
+Route::get('/purchase/success', [StripePaymentController::class, 'success'])->name('purchase.success');
+Route::get('/purchase/cancel', [StripePaymentController::class, 'cancel'])->name('purchase.cancel');
+Route::get('/purchase/complete', [PurchaseController::class, 'complete'])->name('purchase.complete');
 
 //認証が必要な機能
 Route::middleware(['auth'])->group(function() {
@@ -99,12 +101,9 @@ Route::middleware(['auth'])->group(function() {
     //決済関連
     //購入処理の実行
     Route::post('/purchase/{id}/complete', [StripePaymentController::class, 'process'])->name('purchase.store');
-    //決済成功・キャンセル後のリダイレクト先
-    Route::get('/purchase/success', [StripePaymentController::class, 'success'])->name('purchase.success');
-    Route::get('/purchase/cancel', [StripePaymentController::class, 'cancel'])->name('purchase.cancel');
-
     });
 
+    //ログイン・認証済みの時実行
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('profile.show');
     });

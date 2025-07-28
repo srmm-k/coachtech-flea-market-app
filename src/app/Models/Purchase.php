@@ -16,5 +16,18 @@ class Purchase extends Model
         'payment_method',
         'stripe_payment_intent_id',
         'status',
+        'shipping_postcode',
+        'shipping_address',
+        'shipping_building',
     ];
+
+    public function user()
+    {
+        return $this->belongstTo(User::class);
+    }
+
+    public function listing()
+    {
+        return $this->belongsTo(Listing::class);
+    }
 }

@@ -16,7 +16,7 @@ class CreateListingsTable extends Migration
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('buyer_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('buyer_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('image_path');
             $table->json('category');
             $table->string('condition');

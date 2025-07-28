@@ -117,12 +117,6 @@
     const form = e.target;
     const purchaseUrl = form.action;
 
-    //コンビニ払いの金額上限チェック
-    // if (selectedPaymentMethod === 'convenience' && price > 300000) {
-    //     alert('コンビニ払いは30万円未満の商品にのみ対応しています。');
-    //     return;
-    // }
-
     //フォームデータを取得
     const formData = new FormData(form);
     formData.append('payment_method', selectedPaymentMethod); //選択された支払い方法を追加
@@ -135,7 +129,7 @@
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Accept': 'application/json' // JSONレスポンスを期待
+                    'Accept': 'application/json'
                 },
                 body: formData
             });
@@ -160,12 +154,11 @@
         } else if (selectedPaymentMethod === 'convenience') {
             // コンビニ払いの場合
         try {
-        // バックエンドにPaymentIntentの作成をリクエスト
         const response = await fetch(purchaseUrl, {
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Accept': 'application/json' // JSONレスポンスを期待
+                'Accept': 'application/json'
                 },
                 body: formData
             });
@@ -199,19 +192,23 @@
 
         if (error) {
             // Stripe.jsからのエラー
-            console.error('Stripe.js Konbini Error:', error);
                 alert('コンビニ決済の確定中にエラーが発生しました: ' + error.message);
+                window.location.href = '{{route('mypage') }}';
             } else if (paymentIntent && paymentIntent.status === 'requires_action') {
-
-            } else {
+                alert('コンビニ支払いのお支払い情報が表示されました。お支払い情報を控えて、マイページに戻ります。');
+                window.location.href = '{{ route('mypage') }}';
+            } else if (paymentIntent && paymentIntent.status === 'succeeded') {
                 // 予期せぬPaymentIntentステータス
-                console.error('Unexpected PaymentIntent status:', paymentIntent.status);
+                window.location.href = '{{ route('purchase.success') }}';
+            } else {
                 alert('予期せぬ決済ステータスが発生しました。');
+                window.location.href = '{{ route('mypage') }}';
             }
 
             } catch (error) {
-                console.error('Fetch or Stripe.js error:', error);
+                console.error('Fetch error for convenience payment:', error);
                 alert('コンビニ決済処理中に予期せぬエラーが発生しました。');
+                window.location.href = '{{ route('mypage') }}';
             }
         } else {
             form.submit();

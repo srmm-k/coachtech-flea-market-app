@@ -12,6 +12,7 @@ use App\Models\Listing;
 use App\Http\Requests\PurchaseRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
 class StripePaymentController extends Controller
@@ -20,14 +21,15 @@ class StripePaymentController extends Controller
     {
         $method = $request->payment_method;
         $listing = Listing::findOrFail($id); //商品情報を取得
+        $user = Auth::user();
 
         //自分の商品は購入できないようにする
-        if ($listing->user_id === auth()->id()) {
-            return redirect()->route('mypage')->with('error', '自分の商品は購入できません。');
+        if ($listing->user_id === $user->id) {
+            return response()->json(['error' => '自分の商品は購入できません。'], 400);
         }
         // 既に購入されているかチェック
         if ($listing->is_sold) {
-            return redirect()->route('mypage')->with('error', 'この商品は既に購入されています。');
+            return response()->json(['error', 'この商品は既に購入されています。'], 400);
         }
 
         Stripe::setApiKey(config('services.stripe.secret'));
@@ -38,11 +40,12 @@ class StripePaymentController extends Controller
             // Purchaseモデルのインスタンスを準備
             // StripePaymentIntentIDがない場合はnullでOK
             $purchase = Purchase::create([
-                'user_id' => auth()->id(),
+                'user_id' => $user->id,
                 'listing_id' => $listing->id,
                 'price' => $request->price,
                 'payment_method' => $method,
                 // 'stripe_payment_intent_id' は後でセットするか、カード決済ではSession IDを使う
+                'stripe_payment_intent_id' => null,
                 'status' => 'pending', // 支払い開始時は保留
                 'shipping_postcode' => $request->postcode, // Requestから取得
                 'shipping_address' => $request->address,
@@ -50,7 +53,7 @@ class StripePaymentController extends Controller
             ]);
 
             // Listingのis_soldとbuyer_idを更新(共通処理として先に実行)
-            $listing->buyer_id = auth()->id();
+            $listing->buyer_id = $user->id;
             $listing->is_sold = true;
             $listing->save();
 
@@ -83,12 +86,13 @@ class StripePaymentController extends Controller
             DB::commit(); // トランザクションをコミット
             return response()->json(['redirect_url' => $session->url]);
 
+        //コンビニ決済
         } elseif ($method ===  'convenience') {
-            //コンビニ決済
-                if ($request->price > 300000) {
-                    DB::rollBack(); //トランザクションをロールバック
-                    $purchase->delete(); 
-                    return response()->json(['error' => 'コンビニ払いは30万円未満の商品にのみ対応しています。'], 400);
+            //コンビニ払いの金額の上限チェック
+            if ($request->price > 300000) {
+                DB::rollBack(); //トランザクションをロールバック
+                $purchase->delete(); 
+                return response()->json(['error' => 'コンビニ払いは30万円未満の商品にのみ対応しています。'], 400);
                 }
         
 
@@ -111,18 +115,13 @@ class StripePaymentController extends Controller
             //paymentIntentを確定
             $confirmedPaymentIntent = PaymentIntent::retrieve($paymentIntent->id);
 
-            //確認後削除
-            \Log::info('Stripeから受け取ったPaymentIntentのステータス: ' . $confirmedPaymentIntent->status);
-            \Log::info('Stripeから受け取ったPaymentIntentのnext_actionの中身: ' . json_encode($confirmedPaymentIntent->next_action));
-
-
-            // if ($confirmedPaymentIntent->status === 'requires_action' && isset($confirmedPaymentIntent->next_action->konbini_display_details)) {
             $purchase->stripe_payment_intent_id = $confirmedPaymentIntent->id;
             $purchase->status = 'requires_payment_method';
             $purchase->save();
 
             DB::commit(); // トランザクションをコミット
 
+            //Stripe.jsにclient_secretを返す
             return response()->json([
                 'client_secret' => $confirmedPaymentIntent->client_secret,
                 'purchase_id' => $purchase->id,
@@ -148,8 +147,67 @@ class StripePaymentController extends Controller
 
     public function success(Request $request)
     {
-        return view('purchase_complete');
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $user = Auth::user(); // 認証済みユーザーを取得
+
+        // Stripe Checkoutからのリダイレクトの場合 (session_id がクエリパラメータに含まれる)
+        if ($request->has('session_id')) {
+            try {
+                $session = Session::retrieve($request->session_id);
+
+                $purchaseId = $request->input('purchase_id');
+                $purchase = Purchase::where('id', $purchaseId)
+                                    ->where('user_id', $user->id)
+                                    ->first();
+                
+
+                if ($purchase && $session->payment_status === 'paid') {
+                    $purchase->stripe_payment_intent_id = $session->payment_intent;
+                    $purchase->update(['status' => 'succeeded']);
+
+                    return redirect()->route('purchase.complete')->with('success', 'ご購入が完了しました！');
+                } else {
+                    Log::warning('Checkout Sessionの決済が完了していないか、Purchaseレコードが見つかりません。', ['purchase_found' => (bool)$purchase, 'payment_status' => $session->payment_status]);
+                    return redirect()->route('top')->with('error', '決済が完了していません。');
+                }
+
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                Log::error('Stripe API Error in success (Checkout Session): ' . $e->getMessage(), ['exception' => $e]);
+                return redirect()->route('top')->with('error', '決済情報の取得に失敗しました: ' . $e->getMessage());
+            }
+        }
+        // コンビニ決済からのリダイレクトの場合 (payment_intent がクエリパラメータに含まれる)
+        elseif ($request->has('payment_intent')) {
+            try {
+                $paymentIntent = PaymentIntent::retrieve($request->payment_intent);
+
+                $purchaseId = $request->input('purchase_id');
+                $purchase = Purchase::where('id', $purchaseId)
+                                    ->where('user_id', $user->id)
+                                    ->first();
+
+                if ($purchase && $paymentIntent->status === 'succeeded') {
+
+                    $purchase->update(['status' => 'succeeded']);
+
+                    return redirect()->route('purchase.complete')->with('success', 'ご購入が完了しました！');
+                } else {
+                    Log::warning('Payment Intentの決済が完了していないか、Purchaseレコードが見つかりません。', ['purchase_found' => (bool)$purchase, 'payment_intent_status' => $paymentIntent->status]);
+                    return redirect()->route('top')->with('error', 'コンビニ決済が完了していません。ステータス: ' . $paymentIntent->status);
+                }
+
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                Log::error('Stripe API Error in success (Payment Intent): ' . $e->getMessage(), ['exception' => $e]);
+                return redirect()->route('top')->with('error', '決済情報の取得に失敗しました: ' . $e->getMessage());
+            }
+        }
+
+        Log::warning('無効な決済完了リクエストです。session_idもpayment_intentもありません。', ['request_params' => $request->all()]);
+        return redirect()->route('top')->with('error', '無効な決済完了リクエストです。');
     }
+
+        // return view('purchase_complete');
 
     public function cancel(Request $request)
     {

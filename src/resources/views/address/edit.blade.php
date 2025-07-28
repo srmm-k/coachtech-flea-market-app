@@ -11,7 +11,6 @@
     <form action="{{ route('address.update', ['item_id' => $item_id]) }}" method="POST">
         @csrf
         @method('PUT')
-        <!-- <p>Form Action: {{ route('address.update', ['item_id' => $item_id]) }}</p> -->
         <label for="postcode">郵便番号</label>
         <input type="text" name="postcode" id="postcode" value="{{ old('postcode', optional($profile)->postcode) }}">
 

@@ -2,11 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /*垂直方向中央*/
     align-items: center;
-    /*水平方向中央*/
     text-align: center;
-    /*テキスト中央*/
     padding: 250px 620px;
     width: 1695px;
     height: 100%;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Listing;
 use App\Http\Requests\ExhibitionRequest;
+use App\Models\Purchase;
 
 class ListingController extends Controller
 {
@@ -53,7 +54,16 @@ class ListingController extends Controller
         $user = auth()->user();
         $liked = $user && $listing->likedByUsers->contains($user->id);
 
-        return view('product_details', compact('listing', 'liked'));
+        $purchaseInfo = null;
+
+        if ($listing->is_sold && $user && $user->id === $listing->user_id) {
+            $purchaseInfo = Purchase::where('listing_id', $listing->id)
+                                    ->where('status', 'succeeded')
+                                    ->latest()
+                                    ->first();
+        }
+
+        return view('product_details', compact('listing', 'liked', 'purchaseInfo'));
     }
 
     public function search(Request $request)
