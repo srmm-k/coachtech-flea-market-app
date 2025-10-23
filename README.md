@@ -18,17 +18,25 @@ laravel環境構築
 ・ docker-compose exec php bash  
 ・ composer install  
 ・ composer -v  
-・ cp .env.example .env,環境変数を適宜変更  
-・ php artisan make:command MakeBladeCommand,blade.phpのテンプレート作成  
-・ php artisan make:blade login ...各必要なviewの作成  
-・ php artisan make:controller ProfileController ...各必要なcontrollerを作成（アッパーキャメル）  
-・ php artisan make:model Profile ...各必要なmodelを作成（アッパーキャメル）  
+・ cp .env.example .env,環境変数を適宜変更    
+  DB_HOSTをmysqlに変更  
+  DB_DATABASEをlaravel_dbに変更  
+  DB_USERNAMEをlaravel_userに変更  
+  DB_PASSをlaravel_passに変更  
+  MAIL_FROM_ADDRESSを送信元アドレスを設定  
+・ cp .env .env.testing  
+・ .env.testing 一部修正  
+  APP_KEYに.envファイルのAPP_KEYに設定しているコードをコピペする  
+  DB_DATABASEをlaravel_db_testに変更  
+  
 ・ php artisan make:migration create_profiles_table ...各必要なtableを作成（スネークケース）  
-・ php artisan make:request LoginRequest ...各必要なRequestを作成（アッパーキャメル）  
-・ マイグレーションファイル編集後、php artisan migrate　実行  
 ・ php artisan make:seeder ListingsTablesSeeder ...各必要なSeederを作成（アッパーキャメル）  
+・ マイグレーションファイル編集後、php artisan migrate　実行  
 ・ ダミーデータの作成  
+・ php artisan key:generate 実行  
 ・ php artisan db:seed 実行  
+・ php artisan test
+  
 
 開発環境
 
